@@ -1,0 +1,58 @@
+.home-hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../../../../assets/img/dog-background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: 0.5s;
+  &--container {
+    display: grid;
+    grid-template-columns: auto;
+    row-gap: 50px;
+    justify-items: center;
+    &-desc {
+      border-radius: 30px;
+      width: 500px;
+      font-size: 20px;
+      padding: 50px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      transition: 0.5s all;
+    }
+    &-btn {
+      width: fit-content;
+      border: none;
+      padding: 20px 50px;
+      font-size: 34px;
+      border-radius: 40px;
+      cursor: pointer;
+      background-color: #e5c09c;
+      transition: 0.5s;
+      &:hover {
+        background-color: #df8933;
+        color: #000;
+        transform: translateY(10%);
+      }
+    }
+  }
+}
+
+.hide {
+  transition: 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.visible {
+  transition: 1s;
+  visibility: visible;
+  opacity: 1;
+}
+
+// .background-blur {
+//   background-image: none;
+//   transition: 1s;
+//   background-color: #000;
+// }

@@ -1,0 +1,23 @@
+<section class="home-hero">
+  <div class="home-hero--container">
+    <p [class.hide]="isStarted === true" class="home-hero--container-desc">
+      Lets start a game where you have to guess breed of the dog by looking at
+      image. If you guess wrong you have to start again! Lets see how far you
+      can go!
+    </p>
+    <button
+      (click)="onClickStartGame()"
+      [class.hide]="isStarted === true"
+      class="home-hero--container-btn"
+    >
+      Start!
+    </button>
+  </div>
+
+ 
+  <app-game-with-chances
+    [ngClass]="isStarted === false ? 'hide' : 'visible'"
+  ></app-game-with-chances>
+  
+</section>
+

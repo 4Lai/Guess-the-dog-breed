@@ -1,0 +1,74 @@
+.game-with-chances {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &--container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 80px 125px;
+    border-radius: 20px;
+    &-btn {
+      margin: auto auto;
+      display: grid;
+      padding: 10px 25px;
+      border: none;
+      background-color: red;
+      transition: 0.5s;
+      color: #fff;
+      width: fit-content;
+      margin-bottom: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      &:hover {
+        background-color: #fff;
+        color: #000;
+        
+      }
+    }
+    &-flex {
+      display: flex;
+      justify-content: space-between;
+      &-score {
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 10px;
+      }
+    }
+    &-img {
+      width: 600px;
+      height: 400px;
+      margin-bottom: 10px;
+    }
+    &-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 100%;
+      row-gap: 5px;
+      &-ans {
+        width: calc(600px - 30px);
+        padding: 15px;
+        background-color: #fff;
+        cursor: pointer;
+        color: #000;
+        transition: 0.5s all;
+        font-size: 24px;
+        font-weight: 500;
+        &:hover {
+          background-color: #b2b2b2;
+        }
+      }
+    }
+  }
+}
+
+.disabled {
+    pointer-events:none;
+    opacity:0.6;         
+}
+
+.correct {
+background-color: green;
+}
+.wrong {
+background-color: red;
+}
