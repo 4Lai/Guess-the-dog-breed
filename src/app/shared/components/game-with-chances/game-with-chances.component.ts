@@ -13,7 +13,32 @@ import { CommonModule, TitleCasePipe } from '@angular/common';
   providers: [RandomBreedImageService],
 })
 export class GameWithChancesComponent implements OnInit {
-  allBreeds: any = this.activatedRoute.snapshot.data['breedData'];
+  notWorkingBreeds: string[] = [];
+  allBreeds: any = this.activatedRoute.snapshot.data['breedData'].filter(
+    (el: any) => {
+      if (
+        el === 'kelpie' ||
+        el === 'bakharwal' ||
+        el === 'cavapoo' ||
+        el === 'chippiparai' ||
+        el === 'gaddi' ||
+        el === 'greyhound' ||
+        el === 'kombai' ||
+        el === 'mastiff' ||
+        el === 'mudhol' ||
+        el === 'pariah' ||
+        el === 'pitbull' ||
+        el === 'rajapalayam' ||
+        el === 'sheepdog' ||
+        el === 'spitz'
+      ) {
+        this.notWorkingBreeds.push(el);
+        return;
+      } else {
+        return el;
+      }
+    }
+  );
   highestScore: number = 0;
   score: number = 0;
   fourBreeds: Breed[] = [];
@@ -27,18 +52,13 @@ export class GameWithChancesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.fourBreeds.push(
-      this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)],
-      this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)],
-      this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)],
-      this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)]
-    );
+    this.randomFourBreeds()
 
     this.valueImg2 = this.randomValueImg();
 
     this.randomBreedImage.getRandomImage(this.valueImg2).subscribe((el) => {
       this.randomImage = el;
-    });
+    })
   }
 
   randomValueImg() {
@@ -61,23 +81,27 @@ export class GameWithChancesComponent implements OnInit {
     this.failed = false;
     this.fourBreeds = [];
 
-    this.fourBreeds.push(
-      this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)],
-      this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)],
-      this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)],
-      this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)]
-    );
+    this.randomFourBreeds()
     this.valueImg2 = this.randomValueImg();
 
     this.randomBreedImage.getRandomImage(this.valueImg2).subscribe((el) => {
       this.randomImage = el;
-    });
+    })
   }
 
   checkScore() {
     if (this.score > this.highestScore || this.score === this.highestScore) {
       this.highestScore = this.score;
     }
+  }
+
+  randomFourBreeds() {
+    this.fourBreeds.push(
+      this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)],
+      this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)],
+      this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)],
+      this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)]
+    );
   }
 
   onClick(value: string) {
@@ -88,17 +112,12 @@ export class GameWithChancesComponent implements OnInit {
       this.checkScore();
       this.fourBreeds = [];
 
-      this.fourBreeds.push(
-        this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)],
-        this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)],
-        this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)],
-        this.allBreeds[Math.floor(Math.random() * this.allBreeds.length)]
-      );
+      this.randomFourBreeds()
       this.valueImg2 = this.randomValueImg();
 
       this.randomBreedImage.getRandomImage(this.valueImg2).subscribe((el) => {
         this.randomImage = el;
-      });
+      })
     } else {
       let li = document.querySelectorAll(
         '.game-with-chances--container-list-ans'

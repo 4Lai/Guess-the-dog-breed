@@ -13,7 +13,7 @@ export class GetAllBreedsService {
     return this.httpClient.get<any>(
       `https://dog.ceo/api/breeds/list/all
 `
-    );
+    )
   }
 
   randomizeOrder(element: string) {
