@@ -53,7 +53,6 @@ export class GameWithChancesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.allBreeds);
     this.randomFourBreeds();
 
     this.valueImg2 = this.randomValueImg();
