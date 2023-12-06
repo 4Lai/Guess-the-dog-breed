@@ -30,7 +30,8 @@ export class GameWithChancesComponent implements OnInit {
         el === 'pitbull' ||
         el === 'rajapalayam' ||
         el === 'sheepdog' ||
-        el === 'spitz'
+        el === 'spitz' ||
+        el === 'australian'
       ) {
         this.notWorkingBreeds.push(el);
         return;
@@ -52,13 +53,14 @@ export class GameWithChancesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.randomFourBreeds()
+    console.log(this.allBreeds);
+    this.randomFourBreeds();
 
     this.valueImg2 = this.randomValueImg();
 
     this.randomBreedImage.getRandomImage(this.valueImg2).subscribe((el) => {
       this.randomImage = el;
-    })
+    });
   }
 
   randomValueImg() {
@@ -81,12 +83,12 @@ export class GameWithChancesComponent implements OnInit {
     this.failed = false;
     this.fourBreeds = [];
 
-    this.randomFourBreeds()
+    this.randomFourBreeds();
     this.valueImg2 = this.randomValueImg();
 
     this.randomBreedImage.getRandomImage(this.valueImg2).subscribe((el) => {
       this.randomImage = el;
-    })
+    });
   }
 
   checkScore() {
@@ -112,12 +114,12 @@ export class GameWithChancesComponent implements OnInit {
       this.checkScore();
       this.fourBreeds = [];
 
-      this.randomFourBreeds()
+      this.randomFourBreeds();
       this.valueImg2 = this.randomValueImg();
 
       this.randomBreedImage.getRandomImage(this.valueImg2).subscribe((el) => {
         this.randomImage = el;
-      })
+      });
     } else {
       let li = document.querySelectorAll(
         '.game-with-chances--container-list-ans'
