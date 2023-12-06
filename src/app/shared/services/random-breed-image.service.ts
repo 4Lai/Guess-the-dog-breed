@@ -3,11 +3,10 @@ import { GameWithChancesComponent } from '../components/game-with-chances/game-w
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: GameWithChancesComponent
+  providedIn: GameWithChancesComponent,
 })
 export class RandomBreedImageService {
-
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   getRandomImage(breed: string) {
     return this.httpClient.get<any>(
